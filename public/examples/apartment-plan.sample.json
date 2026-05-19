@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "apartment-plan.v1.json",
+  "projectName": "Sample 2BR Flat",
+  "units": "mm",
+  "coordinateSystem": {"origin":"top_left","xAxis":"right","yAxis":"down","unit":"mm"},
+  "metadata": {"createdAt":"2026-05-19","updatedAt":"2026-05-19","source":"manual"},
+  "apartmentOutline": [{"x":0,"y":0},{"x":10000,"y":0},{"x":10000,"y":8000},{"x":0,"y":8000}],
+  "rooms": [
+    {"id":"r1","name":"Hallway","type":"hallway","polygon":[{"x":0,"y":0},{"x":2500,"y":0},{"x":2500,"y":2500},{"x":0,"y":2500}],"height":2700,"confidence":0.95},
+    {"id":"r2","name":"Living","type":"living_room","polygon":[{"x":2500,"y":0},{"x":7000,"y":0},{"x":7000,"y":3500},{"x":2500,"y":3500}],"height":2700,"confidence":0.95},
+    {"id":"r3","name":"Kitchen","type":"kitchen","polygon":[{"x":7000,"y":0},{"x":10000,"y":0},{"x":10000,"y":3500},{"x":7000,"y":3500}],"height":2700,"confidence":0.95},
+    {"id":"r4","name":"Bedroom","type":"bedroom","polygon":[{"x":2500,"y":3500},{"x":7000,"y":3500},{"x":7000,"y":8000},{"x":2500,"y":8000}],"height":2700,"confidence":0.95},
+    {"id":"r5","name":"Bathroom","type":"bathroom","polygon":[{"x":0,"y":2500},{"x":2500,"y":2500},{"x":2500,"y":5000},{"x":0,"y":5000}],"height":2700,"confidence":0.95},
+    {"id":"r6","name":"Toilet","type":"toilet","polygon":[{"x":0,"y":5000},{"x":2500,"y":5000},{"x":2500,"y":8000},{"x":0,"y":8000}],"height":2700,"confidence":0.95}
+  ],
+  "walls": [{"id":"w1","start":{"x":0,"y":0},"end":{"x":10000,"y":0},"thickness":200,"type":"exterior","roomIds":["r1","r2","r3"],"height":2700,"confidence":0.98},{"id":"w2","start":{"x":10000,"y":0},"end":{"x":10000,"y":8000},"thickness":200,"type":"exterior","roomIds":["r3"],"height":2700,"confidence":0.98},{"id":"w3","start":{"x":10000,"y":8000},"end":{"x":0,"y":8000},"thickness":200,"type":"exterior","roomIds":["r4","r6"],"height":2700,"confidence":0.98},{"id":"w4","start":{"x":0,"y":8000},"end":{"x":0,"y":0},"thickness":200,"type":"exterior","roomIds":["r1","r5","r6"],"height":2700,"confidence":0.98}],
+  "openings": [
+    {"id":"o1","type":"door","wallId":"w4","positionFromStart":1000,"width":900,"height":2100,"sillHeight":0,"confidence":0.9,"swingDirection":"inward_left","hingeSide":"left"},
+    {"id":"o2","type":"door","wallId":"w4","positionFromStart":3000,"width":800,"height":2100,"sillHeight":0,"confidence":0.9,"swingDirection":"sliding","hingeSide":"unknown"},
+    {"id":"o3","type":"door","wallId":"w3","positionFromStart":2000,"width":800,"height":2100,"sillHeight":0,"confidence":0.9,"swingDirection":"inward_right","hingeSide":"right"},
+    {"id":"o4","type":"window","wallId":"w1","positionFromStart":4000,"width":1600,"height":1400,"sillHeight":900,"confidence":0.95},
+    {"id":"o5","type":"window","wallId":"w2","positionFromStart":3000,"width":1400,"height":1400,"sillHeight":900,"confidence":0.95}
+  ],
+  "fixedElements": [{"id":"fx1","type":"ventilation_shaft","polygon":[{"x":6800,"y":3200},{"x":7300,"y":3200},{"x":7300,"y":3700},{"x":6800,"y":3700}],"height":2700,"confidence":0.9}],
+  "furniture": [
+    {"id":"f1","name":"Wardrobe","category":"wardrobe","position":{"x":3000,"y":4000},"rotation":0,"width":1800,"depth":600,"height":2400,"material":"wood_oak","color":"#b08968","collisionPolicy":"solid","primitives":[{"id":"p1","type":"box","localPosition":{"x":0,"y":0},"size":{"width":1800,"depth":600},"height":2400}],"clearanceZones":[{"id":"cz1","type":"wardrobe_door","polygon":[{"x":3000,"y":4600},{"x":4800,"y":4600},{"x":4800,"y":5200},{"x":3000,"y":5200}]}]},
+    {"id":"f2","name":"Sofa","category":"sofa","position":{"x":3200,"y":500},"rotation":0,"width":2200,"depth":900,"height":900,"material":"fabric","color":"#64748b","collisionPolicy":"solid","primitives":[{"id":"p2","type":"box","localPosition":{"x":0,"y":0},"size":{"width":2200,"depth":900},"height":900}],"clearanceZones":[]},
+    {"id":"f3","name":"Table","category":"table","position":{"x":7600,"y":1200},"rotation":0,"width":1200,"depth":800,"height":750,"material":"wood_oak","color":"#a16207","collisionPolicy":"solid","primitives":[{"id":"p3","type":"box","localPosition":{"x":0,"y":0},"size":{"width":1200,"depth":800},"height":750}],"clearanceZones":[]},
+    {"id":"f4","name":"Chair","category":"chair","position":{"x":7700,"y":2200},"rotation":0,"width":450,"depth":450,"height":900,"material":"metal","color":"#334155","collisionPolicy":"can_overlap_table","primitives":[{"id":"p4","type":"box","localPosition":{"x":0,"y":0},"size":{"width":450,"depth":450},"height":900}],"clearanceZones":[{"id":"cz2","type":"chair_pull_out","polygon":[{"x":7700,"y":2650},{"x":8150,"y":2650},{"x":8150,"y":3050},{"x":7700,"y":3050}]}]}
+  ],
+  "materials": {"wood_oak":{"color":"#b08968"},"fabric":{"color":"#64748b"}}
+}

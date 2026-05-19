@@ -1,0 +1,3 @@
+import { usePlanStore } from '../state/usePlanStore';
+import { snap } from '../geometry/snapping';
+export function InspectorPanel(){ const {plan,selected,setPlan}=usePlanStore(); if(!selected||!plan) return <div><h3>Inspector</h3>Select element</div>; return <div><h3>Inspector</h3><div>{selected.type}:{selected.id}</div>{selected.type==='furniture' && (()=>{const f=plan.furniture.find(x=>x.id===selected.id); if(!f)return null; return <><button onClick={()=>{f.rotation+=15; setPlan({...plan});}}>Rotate +15</button><button onClick={()=>{f.position.x=snap(f.position.x+50); setPlan({...plan});}}>Move X +50</button></>;})()}</div>; }
