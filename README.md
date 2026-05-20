@@ -1,57 +1,54 @@
 # apartment-furniture-planner
 
-Browser-based MVP apartment furniture planner (React + TypeScript + Vite + SVG).
+A browser-based **MVP 2D apartment planner** (Vite + React + TypeScript + SVG) for loading apartment JSON plans, validating them, and arranging furniture safely.
 
-## Features
-- Import/export `apartment-plan.v1.json`
-- Zod + geometry validation with readable error panel
-- SVG rendering: rooms, walls, openings, fixed elements, furniture
-- Layer toggles, selection inspector, basic furniture move/rotate
-- Autosave to LocalStorage
-- AI Recognition Prompt panel for external assistant (PDF/image to JSON)
-- Responsive layout for desktop/mobile/Samsung DeX
+## Project purpose
+- Import/export `apartment-plan.v1.json`.
+- Validate geometry/schema issues early.
+- Visualize apartment outline, rooms, walls, openings, fixed elements, and furniture.
+- Keep the workflow lightweight and frontend-only.
 
-## Run locally
+## Local development
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
+## Build and verification
 ```bash
 npm run typecheck
 npm run build
 npm run preview
 ```
+Build output goes to `dist/`.
 
-## GitHub Pages deploy
-- Workflow: `.github/workflows/pages.yml`
-- Vite base path is set in `vite.config.ts` to `/apartment-furniture-planner/`.
-- If repo name changes, update `base` accordingly.
+Additional runbook: `BUILD_VERIFICATION.md`.
 
-## JSON format (apartment-plan.v1.json)
-- Uses **millimeters only**.
-- Coordinate system: origin `top_left`, xAxis `right`, yAxis `down`.
-- Includes: schemaVersion, metadata, outline, rooms, walls, openings, fixed elements, furniture, materials.
-- Rooms and fixed elements are orthogonal polygons.
-- Walls are explicit line segments with thickness.
+## GitHub Pages deployment
+- Workflow: `.github/workflows/pages.yml`.
+- Vite base path is configured in `vite.config.ts` as `/apartment-furniture-planner/`.
+- If repository name changes, update Vite `base` to `/<new-repository-name>/`.
+
+## JSON import/export workflow
+1. Use **Load JSON** to import an `apartment-plan.v1.json` file.
+2. Fix errors shown in **Validation** panel.
+3. Use **Export JSON** to save the current plan.
+4. Use **Load Sample** for a known-good sample.
 
 ## External AI recognition workflow
-1. Open AI Recognition Prompt panel.
-2. Copy prompt.
-3. Paste into external AI tool with apartment plan PDF/image.
-4. Ensure output is JSON-only `apartment-plan.v1.json`.
-5. Import resulting JSON into this app and correct manually.
+1. Open **AI Recognition Prompt** panel.
+2. Copy the prompt.
+3. Paste it into external AI tooling along with floor plan input (image/pdf).
+4. Ask for strict JSON output in `apartment-plan.v1.json` format.
+5. Import output into this app and review warnings/errors.
 
-## Limitations (MVP)
-- No built-in image recognition.
-- No backend/auth.
+## Current limitations
+- No backend, authentication, or image recognition.
 - 2D SVG only (no 3D).
-- Collision checks are foundational and simplified.
-- No PNG/PDF/DXF/GLTF/OBJ export yet (TODO).
+- Collision and door-swing warnings are heuristic MVP checks.
+- No CAD export formats yet.
 
-## Next stages
-- Better CAD-grade editing constraints.
-- Stronger wall/opening projection logic.
-- Richer collision/clearance analysis.
-- Multi-floor and 3D migration path (Three.js).
+## Planned next steps
+- Stronger geometric diagnostics and snapping.
+- Better collision/clearance constraints.
+- Richer editing tools while keeping JSON compatibility.
