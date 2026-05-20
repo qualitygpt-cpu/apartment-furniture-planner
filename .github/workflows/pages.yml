@@ -28,16 +28,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Pack Pages artifact
-        run: |
-          tar \
-            --dereference --hard-dereference \
-            --directory dist \
-            -cvf artifact.tar \
-            .
-          gzip -9 artifact.tar
-      - name: Upload Pages artifact
-        uses: actions/upload-artifact@v6
+      - uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages
           path: artifact.tar.gz
