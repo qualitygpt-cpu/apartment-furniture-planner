@@ -31,7 +31,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages
-          path: artifact.tar.gz
+          path: ./dist
           retention-days: 1
 
   deploy:
